@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 
-URL = "https://www.cars.com/shopping/results/?stock_type=new&makes%5B%5D=ford&models%5B%5D=ford-mustang_mach_e&list_price_max=&maximum_distance=500&zip=89502"
+URL = "https://www.cars.com/shopping/results/?list_price_max=&makes[]=ford&maximum_distance=500&models[]=ford-mustang_mach_e&page=1&page_size=200&stock_type=new&zip=89502"
 
 
 #URL = "https://www.mbofreno.com/new-inventory/index.htm?search=&model=C-Class&gvBodyStyle=Sedan"
