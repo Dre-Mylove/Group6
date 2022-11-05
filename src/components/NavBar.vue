@@ -1,10 +1,13 @@
 <template>
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+  
+
   <div class="container-fluid">
     <a class="navbar-brand" href="#">LazyCars</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="mx-auto" style="width: 400px;"></div>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -16,12 +19,10 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Thing3</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Thing4</a>
-        </li>
       </ul>
     </div>
   </div>
+
 </nav>
 
 <div id="app">
@@ -47,22 +48,22 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: white;
 }
 
-p {
-   line-height: 1rem;
-   color: black;
-}
+
 
 
 </style>
