@@ -54,8 +54,6 @@ export default {
 
 <style>
 .wallpaper-login {
-  background: url(https://images.pexels.com/photos/925743/pexels-photo-925743.jpeg?cs=srgb&dl=pexels-jo%C3%A3o-jesus-925743.jpg&fm=jpg)
-      no-repeat center center;
   background-size: cover;
   height: 100%;
   position: absolute;
