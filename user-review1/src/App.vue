@@ -1,16 +1,19 @@
-<template>
-  <h1>hello world</h1>
-</template>
-
 <script>
-
 export default {
-  name: 'App',
-  components: {
-    
+  data() {
+    return {
+      message: ''
+    }
   }
 }
 </script>
+
+<template>
+	<span>Enter Review:</span>
+  <p style="white-space: pre-line;">{{ message }}</p>
+	<textarea v-model="message" placeholder="add review"></textarea>
+</template>
+
 
 <style>
 #app {
