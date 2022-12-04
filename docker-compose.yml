@@ -1,0 +1,66 @@
+# Use root/mysql as user/password credentials
+version: '3.8'
+
+services:
+
+    adminer:
+        image: phpmyadmin/phpmyadmin
+
+        restart: always
+        ports:
+            - 80:80
+        networks:
+            red_web:
+                ipv4_address: 192.168.10.20
+            red_interna:
+                ipv4_address: 192.168.20.20
+        hostname: adminer
+
+    # api_docker:
+    #     build:
+    #         context: ./
+    #         dockerfile: Dockerfile
+    #     image: api_image
+    #     restart: always
+    #     depends_on:
+    #         - db
+    #     volumes:
+    #       - .\src:/code/app
+    #     ports:
+    #         - 8080:8080
+    #     networks:
+    #         red_web:
+    #             ipv4_address: 192.168.10.30
+    #         red_interna:
+    #             ipv4_address: 192.168.20.30
+    #     hostname: api_server
+
+    db:
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: base
+            MYSQL_USER: usuario
+            MYSQL_PASSWORD: 1234
+        volumes:
+            - ./data/db:/var/lib/mysql
+        ports:
+            - "33306:3306"
+        networks:
+            red_interna:
+                ipv4_address: 192.168.20.10
+        hostname: data_base_server
+        # container_name: data_base_server
+        
+
+networks:
+    red_web:
+        ipam:
+            config:
+              - subnet: 192.168.10.0/24
+    red_interna:
+        ipam:
+            config:
+              - subnet: 192.168.20.0/24
