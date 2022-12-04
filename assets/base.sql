@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: db
--- Tiempo de generación: 02-12-2022 a las 00:44:34
+-- Tiempo de generación: 04-12-2022 a las 01:46:21
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.19
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `base`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Adress`
+--
+
+CREATE TABLE `Adress` (
+  `adress_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `state` int NOT NULL,
+  `street_num` varchar(50) NOT NULL,
+  `zipcode` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -55,7 +69,8 @@ CREATE TABLE `Cars` (
   `price` double NOT NULL,
   `used` tinyint NOT NULL COMMENT 'true is used, new is false',
   `style_id` int NOT NULL,
-  `basic_id` int NOT NULL
+  `basic_id` int NOT NULL,
+  `dealer_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -83,6 +98,28 @@ CREATE TABLE `Color` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `Dealership`
+--
+
+CREATE TABLE `Dealership` (
+  `dealer_id` int NOT NULL,
+  `deal_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Dealership_Aux`
+--
+
+CREATE TABLE `Dealership_Aux` (
+  `dealer_id` int NOT NULL,
+  `adress_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `Features`
 --
 
@@ -105,6 +142,20 @@ CREATE TABLE `Fuel_Type` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `Review`
+--
+
+CREATE TABLE `Review` (
+  `review_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `review_date` date NOT NULL,
+  `review` text NOT NULL,
+  `dealer_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `Style`
 --
 
@@ -113,9 +164,31 @@ CREATE TABLE `Style` (
   `style_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `User`
+--
+
+CREATE TABLE `User` (
+  `user_id` int NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` int NOT NULL,
+  `dob` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `Adress`
+--
+ALTER TABLE `Adress`
+  ADD PRIMARY KEY (`adress_id`),
+  ADD KEY `FK_user_id_adress` (`user_id`);
 
 --
 -- Indices de la tabla `Basic`
@@ -132,7 +205,8 @@ ALTER TABLE `Basic`
 ALTER TABLE `Cars`
   ADD PRIMARY KEY (`car_id`),
   ADD KEY `FK_style_car` (`style_id`),
-  ADD KEY `FK_basic_car` (`basic_id`);
+  ADD KEY `FK_basic_car` (`basic_id`),
+  ADD KEY `FK_dealer_car` (`dealer_id`);
 
 --
 -- Indices de la tabla `Car_Features`
@@ -148,6 +222,19 @@ ALTER TABLE `Color`
   ADD PRIMARY KEY (`color_id`);
 
 --
+-- Indices de la tabla `Dealership`
+--
+ALTER TABLE `Dealership`
+  ADD PRIMARY KEY (`dealer_id`);
+
+--
+-- Indices de la tabla `Dealership_Aux`
+--
+ALTER TABLE `Dealership_Aux`
+  ADD PRIMARY KEY (`adress_id`,`dealer_id`),
+  ADD KEY `FK_dealer_id_aux` (`dealer_id`);
+
+--
 -- Indices de la tabla `Features`
 --
 ALTER TABLE `Features`
@@ -160,14 +247,34 @@ ALTER TABLE `Fuel_Type`
   ADD PRIMARY KEY (`fuel_id`);
 
 --
+-- Indices de la tabla `Review`
+--
+ALTER TABLE `Review`
+  ADD PRIMARY KEY (`review_id`),
+  ADD KEY `FK_user_id` (`user_id`),
+  ADD KEY `FK_dealer_id` (`dealer_id`);
+
+--
 -- Indices de la tabla `Style`
 --
 ALTER TABLE `Style`
   ADD PRIMARY KEY (`style_id`);
 
 --
+-- Indices de la tabla `User`
+--
+ALTER TABLE `User`
+  ADD PRIMARY KEY (`user_id`);
+
+--
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `Adress`
+--
+ALTER TABLE `Adress`
+  ADD CONSTRAINT `FK_user_id_adress` FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Filtros para la tabla `Basic`
@@ -182,6 +289,7 @@ ALTER TABLE `Basic`
 --
 ALTER TABLE `Cars`
   ADD CONSTRAINT `FK_basic_car` FOREIGN KEY (`basic_id`) REFERENCES `Basic` (`basic_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `FK_dealer_car` FOREIGN KEY (`dealer_id`) REFERENCES `Dealership` (`dealer_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `FK_style_car` FOREIGN KEY (`style_id`) REFERENCES `Style` (`style_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
@@ -190,6 +298,20 @@ ALTER TABLE `Cars`
 ALTER TABLE `Car_Features`
   ADD CONSTRAINT `FK_car_id` FOREIGN KEY (`car_id`) REFERENCES `Cars` (`car_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `FK_feature_id` FOREIGN KEY (`feature_id`) REFERENCES `Features` (`feature_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Filtros para la tabla `Dealership_Aux`
+--
+ALTER TABLE `Dealership_Aux`
+  ADD CONSTRAINT `FK_adress_id` FOREIGN KEY (`adress_id`) REFERENCES `Adress` (`adress_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `FK_dealer_id_aux` FOREIGN KEY (`dealer_id`) REFERENCES `Dealership` (`dealer_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Filtros para la tabla `Review`
+--
+ALTER TABLE `Review`
+  ADD CONSTRAINT `FK_dealer_id` FOREIGN KEY (`dealer_id`) REFERENCES `Dealership` (`dealer_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `FK_user_id` FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
