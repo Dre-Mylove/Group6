@@ -2,25 +2,31 @@
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
   <div class="container-fluid">
     <a class="navbar-brand" href="#">LazyCars</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
     <div class="mx-auto" style="width: 400px;"></div>
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="CarList.vue">Thing1</a>
+          <router-link to="/" class="nav-link">Home</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Things2</a>
+          <router-link to="/" class="nav-link ">Thing2</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Thing3</a>
+          <router-link to="/" class="nav-link ">About</router-link>
         </li>
+        
       </ul>
+      
     </div>
+    <span class="border border-white px-2 m-2">
+    <a class="navbar-brand rounded-cirlce " href="#">LogIn</a>
+    </span>
+    <span class="border border-white px-2">
+    <a class="navbar-brand" href="#">Sign Up</a>
+    </span>
+    
   </div>
-
+ 
 </nav>
 
 <div id="app">
@@ -61,6 +67,7 @@ a {
   color: white;
 }
 
+
 nav {
   overflow: hidden;
   position: fixed; /* Set the navbar to fixed position */
@@ -68,7 +75,9 @@ nav {
   width: 100%; /* Full width */
 }
 
-
-
+#search {
+  display: inline-block;
+  vertical-align: top;
+}
 
 </style>
