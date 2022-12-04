@@ -57,6 +57,41 @@ class Features (Base):
     feature_id = Column (Integer)
     feature_name = Column (Integer)
 
+class User (Base):
+        __tablename__= 'User'
+        user_id = Column (Integer, primary_key = True)
+        name = Column (String)
+        last_name = Column (String)
+        email = Column (String)
+        phone = Column (Integer)
+        dob = Column (Integer) # then again, not an int, calendar type but dont know how to
+
+class Adress (Base):
+    __tablename__= 'Adress'
+    adress_id = Column (Integer, primary_key = True)
+    user_id = Column (Integer, foreign_key = True) #FK key to user       
+    state = Column (Integer)# this is an int cause i plan to make a list of states from like 1 to 50 and the names just there
+    street_num = Column (String)
+    zipcode  = Column (Integer)
+
+class Dealership (Base):
+    __tablename__= 'Dealership'
+    dealer_id  = Column (Integer, primary_key = True)
+    deal_name = Column (String)
+
+class Dealership_Aux (Base):
+    __tablename__= 'Dealership_Aux'
+    dealer_id = Column (Integer, primary_key = True)
+    adress_id = Column (Integer, primary_key = True)
+
+class Review (Base):
+    __tablename__ = 'Review'
+    review_id = Column (Integer, primary_key = True)
+    user_id = Column (Integer, foreign_key = True)
+    review_date = Column (Integer) #this is not an int, ITS A DATE
+    review = Column (String) #this is not a string its a TEXT FIELD
+    dealer_id = Column (Integer, foreign_key = True)
+    
 Base.metadata.create_all(engine) # i dont even know what this does
 
 
