@@ -6,18 +6,18 @@
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <router-link to="/" class="nav-link">Home</router-link>
+          <router-link to="/HomeView" class="nav-link">Home</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/" class="nav-link ">Thing2</router-link>
+          <router-link to="/" class="nav-link ">Finance</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/" class="nav-link ">About</router-link>
+          <router-link to="/about" class="nav-link ">About</router-link>
         </li>
         
       </ul>
-      
     </div>
+    <router-view/>
     <span class="border border-white px-2 m-2">
     <a class="navbar-brand rounded-cirlce " href="#">LogIn</a>
     </span>
