@@ -2,6 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">LazyCars</a>
+      <div class="mx-auto" style="width: 400px"></div>
       <button
         class="navbar-toggler"
         type="button"
@@ -10,30 +11,32 @@
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
-      ></button>
-      <div class="mx-auto" style="width: 400px"></div>
-      <div class="collapse navbar-collapse" id="navbarScroll">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent1">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <router-link to="/HomeView" class="nav-link">Home</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/" class="nav-link">Finance</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/about" class="nav-link">About</router-link>
-            </li>
-          </ul>
-        </div>
-        <router-view />
-        <span class="border border-white px-2 m-2">
-          <a class="navbar-brand rounded-cirlce" href="#">LogIn</a>
-        </span>
-        <span class="border border-white px-2">
-          <a class="navbar-brand" href="#">Sign Up</a>
-        </span>
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <router-link to="/home" class="nav-link">Home</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="" class="nav-link">Finance</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/about" class="nav-link">About</router-link>
+          </li>
+        </ul>
       </div>
+      <span class="border border-white px-2 m-2">
+        <router-link to="/login" class="nav-link">
+          <a class="navbar-brand rounded-cirlce" href="#">LogIn</a>
+        </router-link>
+      </span>
+      <span class="border border-white px-2">
+        <router-link to="/" class="nav-link">
+        <a class="navbar-brand" href="#">Sign Up</a>
+      </router-link>
+      </span>
     </div>
   </nav>
 
@@ -50,7 +53,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 h3 {
   margin: 40px 0 0;
 }
