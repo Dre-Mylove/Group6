@@ -34,7 +34,7 @@
         </router-link>
       </span>
       <span class="border border-white px-2">
-        <router-link to="/results" class="nav-link">
+        <router-link to="/" class="nav-link">
         <a class="navbar-brand" href="#">Sign Up</a>
       </router-link>
       </span>
@@ -42,6 +42,7 @@
   </nav>
   <router-view />
   <!-- This is where different routes get injected to file-->
+  
 </template>
 
 <script>
