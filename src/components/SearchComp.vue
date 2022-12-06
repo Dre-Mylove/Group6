@@ -113,10 +113,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container {
-  top: 300px;
-  left: 260px;
+    margin-top: 200px;
+    margin-left: 350px;
 }
 .heading {
   font: 90px bold;
@@ -126,9 +126,10 @@ export default {
   top: 50px;
 }
 .buttons {
-  bottom: 500px;
-  left: 500px;
-  z-index: 2;
+  position: relative;
+  margin-left: 510px;
+  
+ 
 }
 .carousel-container {
   z-index: 1;
