@@ -1,6 +1,5 @@
 <template>
    <div id="app">
-   <div class="wallpaper-register">
    </div>
    <div class="container">
       <div class="row">
@@ -8,8 +7,12 @@
             <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
                <h1>Login</h1>
                <form class="form-group">
+                  <span class="m-2">
                   <input v-model="emailLogin" type="email" class="form-control" placeholder="Email" required>
+               </span>
+               <span class="m-2">
                   <input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
+                  </span>
                   <input type="submit" class="btn btn-primary" @click="doLogin">
                   <p><a href="#">Forgot your password?</a></p>
                </form>
@@ -25,13 +28,10 @@
                   <p>Already have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign in here</a>
                   </p>
                </form>
-               
                </div>
             </div>
          </div>
       </div>
-  
-</div>
 </template>
 
 
@@ -46,16 +46,12 @@ export default {
 }
 </script>
 
-<style>
-
-.wallpaper-register {
-   background: url(https://images.pexels.com/photos/925743/pexels-photo-925743.jpeg?cs=srgb&dl=pexels-jo%C3%A3o-jesus-925743.jpg&fm=jpg)
-      no-repeat center center;
-   background-size: cover;
-   height: 100%;
-   position: absolute;
-   width: 100%;
-   z-index: -1;
+<style scoped>
+.emailLogin {
+   bottom: margin 10px;
+}
+.container {
+   margin-top: 200px;
 }
 
 h1 {
@@ -87,11 +83,8 @@ h1 {
    }
 }
 
-
 .card {
    padding: 20px;
 }
-
-
 
 </style>

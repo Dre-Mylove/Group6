@@ -1,54 +1,56 @@
 <template>
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">LazyCars</a>
-    <div class="mx-auto" style="width: 400px;"></div>
-    <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <router-link to="/HomeView" class="nav-link">Home</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/" class="nav-link ">Finance</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/about" class="nav-link ">About</router-link>
-        </li>
-        
-      </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">LazyCars</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      ></button>
+      <div class="mx-auto" style="width: 400px"></div>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <router-link to="/HomeView" class="nav-link">Home</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/" class="nav-link">Finance</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/about" class="nav-link">About</router-link>
+            </li>
+          </ul>
+        </div>
+        <router-view />
+        <span class="border border-white px-2 m-2">
+          <a class="navbar-brand rounded-cirlce" href="#">LogIn</a>
+        </span>
+        <span class="border border-white px-2">
+          <a class="navbar-brand" href="#">Sign Up</a>
+        </span>
+      </div>
     </div>
-    <router-view/>
-    <span class="border border-white px-2 m-2">
-    <a class="navbar-brand rounded-cirlce " href="#">LogIn</a>
-    </span>
-    <span class="border border-white px-2">
-    <a class="navbar-brand" href="#">Sign Up</a>
-    </span>
-    
-  </div>
- 
-</nav>
+  </nav>
 
-<div id="app">
-
-
-
-</div>
+  <div id="app"></div>
 </template>
 
 <script>
 export default {
-  name: 'NavBar',
+  name: "NavBar",
   data() {
-      return {
-
-      } 
-  }
-}
+    return {};
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 h3 {
   margin: 40px 0 0;
 }
@@ -67,7 +69,6 @@ a {
   color: white;
 }
 
-
 nav {
   overflow: hidden;
   position: fixed; /* Set the navbar to fixed position */
@@ -79,5 +80,4 @@ nav {
   display: inline-block;
   vertical-align: top;
 }
-
 </style>
