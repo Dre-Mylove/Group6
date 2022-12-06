@@ -1,15 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>
+    <br>
+    About Us
+  </h1>
+
+  <body>
+    <br>
+    <h5>
+          LazyCar is powered by Aaron Bartee, Clint Vega, Deandre Mylove, Lauren Feldman, and Melanie Bazgan
+    </h5>
+
+  </body>
+  <NavBar/>
+  <HeaderTest/>
+  <FormTest/>
+  <BlockTitle/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavBar from './components/HelloWorld.vue'
+import HeaderTest from './components/about-us.vue'
+import FormTest from './components/TitleForm.vue'
+import BlockTitle from './components/TitleBlock.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    NavBar,
+    HeaderTest,
+    FormTest,
+    BlockTitle,
   }
 }
 </script>
