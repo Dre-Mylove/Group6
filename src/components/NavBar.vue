@@ -1,4 +1,5 @@
 <template>
+  <!--Navbar settings-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">LazyCars</a>
@@ -17,10 +18,11 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item">
+            <!--Router links to move open different pages-->
             <router-link to="/home" class="nav-link">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="" class="nav-link">Finance</router-link>
+            <router-link to="/finance" class="nav-link">Finance</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/about" class="nav-link">About</router-link>
@@ -34,15 +36,15 @@
       </span>
       <span class="border border-white px-2">
         <router-link to="/" class="nav-link">
-        <a class="navbar-brand" href="#">Sign Up</a>
-      </router-link>
+          <a class="navbar-brand" href="#">Sign Up</a>
+        </router-link>
       </span>
     </div>
   </nav>
 
   <div id="app"></div>
 </template>
-
+<!--Component name-->
 <script>
 export default {
   name: "NavBar",

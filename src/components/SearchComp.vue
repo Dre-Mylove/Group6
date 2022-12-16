@@ -1,4 +1,5 @@
 <template>
+  <!--This is clints page, please refere to his code for more information-->
   <div class="container">
     <div class="row">
       <div class="col-2">
@@ -38,10 +39,14 @@
   </div>
 
   <div class="buttons">
-    <button type="button" class="btn btn-primary mt-3 px-2 m-2">Search</button>
-    <button type="button" class="btn btn-secondary mt-3 px-2 m-2">
-      Advanced Search
-    </button>
+    <router-link to="/results" class="nav-link">
+      <button type="button" class="btn btn-primary mt-3 px-2 m-2">
+        Search
+      </button>
+      <button type="button" class="btn btn-secondary mt-3 px-2 m-2">
+        Advanced Search
+      </button>
+    </router-link>
   </div>
 </template>
 
@@ -115,8 +120,8 @@ export default {
 
 <style scoped>
 .container {
-    margin-top: 200px;
-    margin-left: 350px;
+  margin-top: 200px;
+  margin-left: 350px;
 }
 .heading {
   font: 90px bold;
@@ -128,8 +133,6 @@ export default {
 .buttons {
   position: relative;
   margin-left: 510px;
-  
- 
 }
 .carousel-container {
   z-index: 1;

@@ -1,15 +1,14 @@
 <template> 
-    
-    <CarCards/>
+  <CarCards/>
 </template>
   
   <script>
 
-  import CarCards from './components/CarCards.vue'
+  import CarCards from '../components/CarCards.vue'
   
   
   export default {
-    name: 'CarList',
+    name: 'CarListView',
     components: { 
    
       CarCards,

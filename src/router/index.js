@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LogInView from '../views/LogIn.vue'
-import CarCardsView from '../views/CarResults.vue'
+import CarListView from '../views/CarList.vue' 
+import FinanceView from '../views/FinanceView.vue'
 
+//Router defines the view each path of the website opens.
 const routes = [
   {
     path: '/home',
@@ -14,10 +16,16 @@ const routes = [
     name: 'login',
     component: LogInView
   },
+
+  {
+    path: '/finance',
+    name: 'finance',
+    component: FinanceView
+  },
   {
     path: '/results',
     name: 'results',
-    component: CarCardsView
+    component: CarListView
   },
   {
     path: '/about',
